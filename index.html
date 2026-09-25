@@ -27,7 +27,6 @@
   .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:10px;margin-bottom:14px;}
   .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,#12857C,#4B47B8,#9E3F63);}
   h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.2vw,44px);letter-spacing:-.02em;line-height:1.03;margin:0 0 12px;}
-  .v0{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin-left:4px;vertical-align:middle;background:var(--surface);}
   .lede{font-size:16px;color:var(--ink-2);max-width:80ch;margin:0;}
   .lede b{color:var(--ink);font-weight:600;}
 
@@ -187,8 +186,7 @@
 <body>
 <div class="wrap">
   <div class="eyebrow"><span class="dot"></span>Astrodata · Career Framework</div>
-  <h1>Career Lattice — Flow <span class="v0">v0 · draft</span></h1>
-  <p class="lede">One shared rubric across every track — five buckets, weighted differently by role (click a bucket below for what it means). Analytics starts at <b>Senior Analyst</b> — there\u2019s no junior BI role — and promotes across into Analytics Engineering. Analytics Engineering and Data Engineering both start at L1 and climb <b>Senior → Lead → Staff → Principal</b>. Above Lead, Data Engineering forks three ways: stay generalist (Staff/Principal), specialize into <b>Data Architect</b>, or move into <b>Management</b>. Solid arrows are promotions; dashed arrows are on-ramp crossovers.</p>
+  <h1>Career Lattice — Flow</h1>
 
   <div class="edit-toolbar">
     <span class="etag"><span class="pen">✎</span> Editing on — click any title, bullet, or value to edit it</span>
@@ -241,14 +239,7 @@
 
   <div class="detail" id="detail"></div>
 
-  <div class="principles">
-    <div class="principle"><span class="pk">read 1</span><p><b>One rubric, different weights.</b> Every track — IC or management — is scored on the same five buckets. Seniority and direction change the weighting, not the categories.</p></div>
-    <div class="principle"><span class="pk">read 2</span><p><b>Lead is a three-way fork.</b> From Lead Data Engineer, the path splits into generalist IC (Staff/Principal), architecture specialist (Data Architect), or people management — same altitude, different work.</p></div>
-    <div class="principle"><span class="pk">read 3</span><p><b>Two kinds of track change.</b> Senior Analyst → Analytics Engineer is a promotion — there\u2019s no junior BI role to cross from. Analytics Engineer → Data Engineer is an on-ramp crossover that resets to entry level, gated by the dbt Developer cert + ~6 months dbt client experience.</p></div>
-    <div class="principle"><span class="pk">read 4</span><p><b>Certification minimums are written into the description, not a separate badge</b> — the first Technical bullet at that level states the requirement plainly (Omni for Senior Analyst, dbt Developer for Analytics Engineer, one of Snowflake/AWS/GCP for Data Engineer).</p></div>
-  </div>
-
-  <div class="foot"><span>Astrodata — Career Framework</span><span>v0 · draft for discussion</span></div>
+  <div class="foot"><span>Astrodata — Career Framework</span></div>
 </div>
 
 <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
