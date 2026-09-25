@@ -38,9 +38,6 @@
   .buckets-legend button:focus-visible{outline:2px solid #4B47B8;outline-offset:2px;}
   .buckets-legend button .qm{width:13px;height:13px;border-radius:50%;background:var(--line);color:var(--ink-2);font-size:9px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--body);font-style:italic;font-weight:600;}
   .legend{display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em;}
-  .legend .seg{display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px;}
-  .legend .seg i{width:8px;height:12px;border-radius:2px;background:var(--line);display:inline-block;}
-  .legend .seg i.on{background:var(--ink-2);}
   .legend .ln{display:inline-block;width:22px;height:0;border-top:2px solid var(--ink-2);vertical-align:middle;margin-right:6px;}
   .legend .ln.dash{border-top:2px dashed var(--ink-3);}
 
@@ -73,12 +70,6 @@
   .node .nname{font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:-.01em;color:var(--ink);line-height:1.1;}
   .node .nscope{font-size:11.5px;color:var(--ink-2);line-height:1.35;}
   .node .nscope b{color:var(--ink);font-weight:600;}
-  .spark{display:flex;gap:7px;flex-wrap:wrap;margin-top:1px;}
-  .spark .s{display:flex;flex-direction:column;gap:3px;align-items:center;}
-  .spark .s .bars{display:flex;gap:2px;}
-  .spark .s .bars i{width:5px;height:8px;border-radius:1.5px;background:var(--line);}
-  .spark .s .bars i.on{background:var(--nc);}
-  .spark .s span{font-family:var(--mono);font-size:7.5px;letter-spacing:.02em;color:var(--ink-3);}
 
   .conn{position:relative;}
   .conn::before{content:"";position:absolute;left:50%;top:0;bottom:9px;width:2px;transform:translateX(-50%);background:var(--cc);opacity:.5;}
@@ -101,10 +92,6 @@
   .bucket:last-child:nth-child(odd){grid-column:1 / -1;}
   .bucket-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
   .bucket-head .title{font-family:var(--display);font-weight:600;font-size:14px;color:var(--ink);}
-  .weight-pill{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);}
-  .weight-pill .bars{display:flex;gap:2px;}
-  .weight-pill .bars i{width:5px;height:11px;border-radius:1.5px;background:var(--line);}
-  .weight-pill .bars i.on{background:var(--dc);}
   .bucket ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;}
   .bucket li{position:relative;padding-left:18px;font-size:13px;color:var(--ink-2);line-height:1.5;}
   .bucket li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:2px;background:var(--dc);opacity:.55;}
@@ -160,8 +147,6 @@
   .mini.del:hover{border-color:#B23A3A;color:#B23A3A;}
   .addbul{margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink-3);border:1px dashed var(--line);background:transparent;border-radius:6px;padding:5px 9px;cursor:pointer;transition:border-color .12s,color .12s;}
   .addbul:hover{border-color:var(--dc);color:var(--dc);}
-  .weight-pill.editable{cursor:pointer;border:1px solid transparent;padding:2px 4px;border-radius:6px;}
-  .weight-pill.editable:hover{border-color:var(--line);background:var(--surface-2);}
   .modal-card [contenteditable]{display:block;}
 
   .modal-overlay{position:fixed;inset:0;background:rgba(20,30,40,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px;}
@@ -213,12 +198,6 @@
   </div>
   <div class="toolbar" style="margin-top:-6px">
     <div class="legend">
-      <span>Weight:</span>
-      <span><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>Heavy</span>
-      <span><span class="seg"><i class="on"></i><i class="on"></i><i></i></span>Moderate</span>
-      <span><span class="seg"><i class="on"></i><i></i><i></i></span>Light</span>
-    </div>
-    <div class="legend">
       <span><span class="ln"></span>Promotion</span>
       <span><span class="ln dash"></span>Crossover</span>
     </div>
@@ -267,7 +246,6 @@ let BUCKETS=[
   {id:'leadership',label:'Leadership',abbr:'LEAD'},
   {id:'value',label:'Adding value',abbr:'VALUE'}
 ];
-const WLABEL={3:'Heavy',2:'Moderate',1:'Light'};
 
 let BUCKET_DESC={
   technical:{title:'Technical skills', text:'Depth and craft in the core toolchain: SQL, dbt, warehouse platforms (Snowflake, BigQuery, and similar), ingestion, orchestration, and increasingly fluency working alongside AI coding assistants. This bucket is the entry cost at every IC level and stays Heavy through Senior and Staff, but it deliberately eases at Lead and above — past that point, client trust and cross-engagement judgment become the real differentiator, even though the technical bar never disappears. On the management track it drops to Light: enough to coach and review, not to be the primary builder.'},
@@ -302,7 +280,6 @@ let VERTICALS=[
       L4:{name:'Analytics Manager',
         tagline:'The people-leadership entry point on the analytics side — owns a team, not an individual deliverable.',
         scope:'People, delivery & team health (analytics)', direction:'Owns team outcomes, growth and staffing',
-        weight:{technical:1,client:3,innovation:2,leadership:3,value:2},
         technical:['Stays fluent enough in the analytics / AE stack to coach and review approach, though no longer the primary builder'],
         client:['Accountable for analytics delivery across the team; the escalation point when reporting or stakeholder trust is at risk','Owns senior client relationships for analytics work','Anticipates where the client\u2019s analytics needs are heading and staffs ahead of them'],
         innovation:['Champions AI-assisted analytics workflows and shared skills across the team, and makes room for people to build them'],
@@ -312,7 +289,6 @@ let VERTICALS=[
       L6:{name:'Director of Analytics',
         tagline:'Owns the analytics practice — its direction, its health, and how it\u2019s represented to the business.',
         scope:'The analytics practice', direction:'Sets the practice\u2019s direction and owns its outcomes',
-        weight:{technical:1,client:3,innovation:3,leadership:3,value:3},
         technical:['Sets the technical bar for the practice by proxy — through the leaders they hire, develop and hold accountable'],
         client:['Executive sponsor for the firm\u2019s largest or highest-risk analytics relationships','Accountable for the practice\u2019s overall delivery reputation with clients and internally'],
         innovation:['Sets the practice\u2019s AI strategy and decides where the firm invests'],
@@ -328,7 +304,6 @@ let VERTICALS=[
       L2:{name:'Senior Analyst',
         tagline:'The floor of the analytics track — there\u2019s no junior BI role. Owns a reporting domain and the judgment calls that go with it.',
         scope:'A reporting domain', direction:'Problem is defined; they define the analysis approach',
-        weight:{technical:2,client:3,innovation:2,leadership:2,value:2},
         cert:{name:'Omni Certification', note:'Minimum requirement for this level'},
         technical:['Holds the Omni certification — the minimum bar for this level','Designs the analysis / reporting approach for a domain, not just individual reports','Establishes metric-definition conventions others follow','Debugs discrepancies across reports and traces them to root cause'],
         client:['Trusted directly by client stakeholders; anticipates unmet reporting needs','Surfaces risk — data quality, definitional drift — before it reaches leadership','Reads organizational context: who actually needs to be convinced by a number'],
@@ -339,7 +314,6 @@ let VERTICALS=[
       L3:{name:'Analytics Lead',
         tagline:'Owns the analytics function of an engagement and the trust that sits on top of it. A fork point.',
         scope:'An analytics engagement', direction:'Outcome is defined; they shape what gets measured',
-        weight:{technical:2,client:3,innovation:2,leadership:3,value:3},
         technical:['Sets the reporting / analysis standard for an engagement','Decides what should and shouldn\u2019t be measured, and why','Designs for the hard cases: conflicting metric definitions, legacy report sprawl'],
         client:['Owns the relationship with client analytics leadership','Rebuilds trust when reporting has been wrong or inconsistent','Accountable for the analytics roadmap: plan, prioritization, what ships when'],
         innovation:['Owns the AI-assisted analytics approach for the engagement','Brings solutions that raise how the whole team analyzes data'],
@@ -349,7 +323,6 @@ let VERTICALS=[
       L4:{name:'Staff Analyst',
         tagline:'Sets analytics direction across multiple engagements — the cross-account throughline for how Astrodata measures things.',
         scope:'Analytics patterns across several engagements', direction:'Ambiguous cross-account measurement problems; they scope what to solve',
-        weight:{technical:2,client:3,innovation:2,leadership:3,value:3},
         technical:['Sets analysis patterns and metric governance adopted across multiple engagements','The go-to for the hardest measurement problems across accounts'],
         client:['Trusted advisor across several client relationships on analytics maturity','Called in to de-risk a reporting-trust problem on another engagement'],
         innovation:['Sets AI-assisted analytics patterns adopted practice-wide','Publishes points of view that shape how the firm approaches measurement'],
@@ -359,7 +332,6 @@ let VERTICALS=[
       L5:{name:'Principal Analyst',
         tagline:'The technical apex of the analytics path — owns full-practice pattern management and enablement, defining how the firm measures and reports at scale.',
         scope:'Full-practice pattern management and enablement', direction:'Identifies what\u2019s worth measuring across accounts',
-        weight:{technical:2,client:3,innovation:2,leadership:2,value:3},
         technical:['Defines reference measurement frameworks reused across clients','Sets the firm\u2019s point of view on metrics governance and reporting architecture'],
         client:['Executive-level credibility on measurement and analytics strategy','Requested by name to de-risk the hardest analytics decisions'],
         innovation:['Sets the firm-wide standard for AI in analytics work'],
@@ -375,7 +347,6 @@ let VERTICALS=[
       L1:{name:'Analytics Engineer',
         tagline:'Builds and maintains the modeling layer that analytics and BI depend on — the on-ramp from analytics into engineering.',
         scope:'Models in the semantic / marts layer', direction:'Goal is defined; they build the models',
-        weight:{technical:3,client:1,innovation:2,leadership:1,value:1},
         cert:{name:'dbt Developer Certification', note:'Minimum requirement for this level'},
         technical:['Holds the dbt Developer certification — the minimum requirement for this level','Builds and tests dbt models in the marts / semantic layer following established conventions','Writes clean, documented SQL; understands dimensional-modeling basics','Debugs model failures within the transform layer; escalates upstream pipeline issues appropriately','Comfortable with Git / PR workflow'],
         client:['Translates analyst / BI requirements into model specs without much back-and-forth','Explains what a model does and why, in plain language, to the requesting analyst','Responsive in client channels; flags blockers early'],
@@ -386,7 +357,6 @@ let VERTICALS=[
       L2:{name:'Senior Analytics Engineer',
         tagline:'Owns a modeling domain end to end — the semantic layer people trust.',
         scope:'A modeling domain', direction:'Problem is defined; they define the modeling approach',
-        weight:{technical:3,client:2,innovation:3,leadership:2,value:2},
         technical:['Designs the modeling approach for a domain (e.g., revenue, product usage) and defends the tradeoffs','Establishes testing, documentation and naming conventions others follow','Real depth in dbt patterns — incremental models, snapshots, macros — and warehouse performance basics','Reviews others\u2019 model PRs, including AI-assisted ones, in a way that teaches'],
         client:['Trusted directly by analysts and BI stakeholders; loops in engineering only when needed','Surfaces data-quality or definitional risk before it reaches a dashboard','Reads which stakeholder actually owns a metric definition'],
         innovation:['Establishes team-level AI workflows for modeling work and shares them','Has a view on where AI genuinely speeds up modeling work vs. where it doesn\u2019t','Brings new modeling patterns back from client work'],
@@ -396,7 +366,6 @@ let VERTICALS=[
       L3:{name:'Lead Analytics Engineer',
         tagline:'Owns the modeling layer of an engagement and the trust that sits on top of it. A fork point.',
         scope:'Transformation layer of an engagement', direction:'Outcome is defined; they define the problem',
-        weight:{technical:2,client:3,innovation:3,leadership:3,value:3},
         technical:['Sets the modeling standard for an engagement — conventions, testing bar, documentation','Evaluates modeling / semantic-layer tooling tradeoffs, including metrics-layer adoption','Designs for the hard cases: slowly changing dimensions, cross-source conformance, historical restatement','Recognized as the modeling authority on the engagement'],
         client:['Owns the relationship with analytics / BI leadership on the client side','Rebuilds trust when a metric or model has been wrong in front of stakeholders','Accountable for the modeling roadmap: plan, prioritization, what ships when','Anticipates unmet reporting needs before they\u2019re requested'],
         innovation:['Owns the AI-assisted modeling approach for the engagement, including client policy questions','Architects the semantic layer to serve AI / agent consumers as first-class','Brings solutions that raise how the whole team models'],
@@ -406,7 +375,6 @@ let VERTICALS=[
       L4:{name:'Staff Analytics Engineer',
         tagline:'Sets modeling direction across multiple engagements — the cross-account throughline for how Astrodata models data.',
         scope:'Modeling patterns across several engagements', direction:'Ambiguous cross-account modeling problems; they scope what to solve',
-        weight:{technical:3,client:2,innovation:3,leadership:3,value:3},
         technical:['Sets modeling patterns adopted across multiple engagements, not just one','The go-to for the hardest modeling problems across accounts','Evaluates and introduces new modeling tooling or metrics-layer platforms at the practice level'],
         client:['Trusted advisor across several client relationships on modeling maturity','Called in by other leads to de-risk a modeling or reporting-trust problem'],
         innovation:['Sets AI-assisted modeling patterns adopted practice-wide','Publishes or presents points of view that shape how the firm approaches modeling'],
@@ -416,7 +384,6 @@ let VERTICALS=[
       L5:{name:'Principal Analytics Engineer',
         tagline:'The technical apex of the analytics engineering path — defines how the firm models data at scale.',
         scope:'Cross-engagement modeling architecture', direction:'Identifies the right modeling architecture across accounts',
-        weight:{technical:3,client:2,innovation:3,leadership:2,value:3},
         technical:['Defines reference modeling architectures reused across clients','Sets the firm\u2019s point of view on the semantic layer and metrics governance','Handles genuinely novel modeling problems with no established pattern'],
         client:['Executive-level technical credibility on data / metrics strategy','Requested by name to de-risk the hardest modeling decisions'],
         innovation:['Sets the firm-wide standard for AI in modeling work','Designs modeling patterns that serve AI / agent consumers as first-class'],
@@ -432,7 +399,6 @@ let VERTICALS=[
       L1:{name:'Data Engineer',
         tagline:'Independently productive on defined work — the landing level for analytics crossovers building toward Senior.',
         scope:'A component or workstream', direction:'Goal is defined; they figure out the how',
-        weight:{technical:3,client:1,innovation:2,leadership:1,value:1},
         cert:{name:'Cloud Platform Certification (Snowflake, AWS, or GCP)', note:'At least one required for this level'},
         technical:['Holds at least one cloud / warehouse platform certification — Snowflake SnowPro Core, AWS, or GCP equivalent — the minimum bar for this level','Writes SQL and dbt models that follow team standards; needs review but not rewrites','Builds and tests models across staging → intermediate → marts without hand-holding','Applies incremental strategies, snapshots and materialization choices appropriately, with guidance on harder cases','Debugs pipeline failures end to end across orchestration, warehouse and transform layers','Solid Git and PR hygiene'],
         client:['Translates client requirements into technical work without a relay person in between','Demos their own work; explains technical decisions in language the audience uses','Responsive and professional in client channels; escalates blockers early rather than going quiet'],
@@ -443,7 +409,6 @@ let VERTICALS=[
       L2:{name:'Senior Data Engineer',
         tagline:'Owns a domain. Others\u2019 work gets better because of them — the solid senior consultant bar.',
         scope:'A domain within an engagement', direction:'Problem is defined; they define the work',
-        weight:{technical:3,client:2,innovation:3,leadership:2,value:2},
         technical:['Designs the architecture for a domain within a client platform and defends the tradeoffs','Performance and cost tuning; warehouse configuration; CI/CD design for data','Real depth in ≥1 platform plus working breadth across ingestion, transformation, orchestration and activation','Reviews others\u2019 PRs — including AI-generated code — in a way that teaches, not just gates'],
         client:['Trusted directly by client data leads and analysts; looped in without a PM','Disagrees constructively and can say no while keeping the relationship intact','Surfaces risk before it becomes a problem; reads which stakeholder actually needs convincing','Plans a domain spanning several people; manages scope creep explicitly; contributes to estimates and SOW language'],
         innovation:['Establishes team-level AI workflows — repo context files, reusable prompts, review norms — and shares the skills','Has an evidence-based view on where AI-assisted work helps and where it doesn\u2019t','Begins architecting for AI consumers — semantic layers, metadata enrichment, data contracts','Brings new patterns and perspectives back from client work'],
@@ -453,7 +418,6 @@ let VERTICALS=[
       L3:{name:'Lead Data Engineer',
         tagline:'Owns an engagement\u2019s outcome and the relationship that comes with it. The three-way fork point: stay generalist, specialize into architecture, or move into management.',
         scope:'An engagement / a client platform', direction:'Outcome is defined; they define the problem',
-        weight:{technical:2,client:3,innovation:3,leadership:3,value:3},
         technical:['Sets the technical standard for an engagement — patterns, conventions, quality bar','Evaluates and selects tooling with commercial and operational tradeoffs in view','Designs for the hard cases: migrations, governance, security, multi-tenancy, decommissioning legacy','Recognized internally as the authority in at least one area'],
         client:['Owns relationships with client stakeholders through director level; navigates competing internal agendas','Rebuilds trust when delivery goes wrong — the hardest and most valuable version of this skill','Accountable for engagement delivery: plan, staffing input, budget burn, change orders; runs steering conversations','Anticipates unmet client needs; identifies expansion and hands it to account leadership with context'],
         innovation:['Owns the AI-assisted delivery approach for an engagement — including negotiating client policy (tools, data handling, IP of generated code)','Architects platforms that serve AI and agent consumers as first-class, with evaluation built in','Brings solutions and perspectives that raise how the whole team works'],
@@ -463,7 +427,6 @@ let VERTICALS=[
       L4:{name:'Staff Data Engineer',
         tagline:'Sets technical direction across multiple engagements at once — the generalist continuation of the IC path.',
         scope:'Patterns and standards across several engagements', direction:'Ambiguous cross-account problems; they scope what to solve',
-        weight:{technical:3,client:2,innovation:3,leadership:3,value:3},
         technical:['Sets technical patterns adopted across multiple engagements, not just one','The go-to for the hardest technical problems across accounts','Evaluates and introduces new tooling or platforms at the practice level, weighing cost and risk across clients','Recognized as a top technical authority in more than one area'],
         client:['Trusted advisor across several client relationships at once, not just one account\u2019s stakeholders','Called in by other leads to de-risk a client conversation or delivery risk','Represents Astrodata\u2019s technical credibility in new-client / pre-sales conversations'],
         innovation:['Sets AI-assisted delivery patterns that get adopted practice-wide, not just on one engagement','Evaluates new AI tooling / platforms for the practice and makes a build-or-adopt recommendation','Publishes or presents technical points of view that shape how the firm thinks about a problem space'],
@@ -473,7 +436,6 @@ let VERTICALS=[
       L5:{name:'Principal Data Engineer',
         tagline:'The delivery-engineering apex of the IC path — deep technical ownership across the practice\u2019s hardest delivery challenges. (See Data Architect for the reference-architecture apex.)',
         scope:'Delivery-grade technical leadership across the practice', direction:'Solves the practice\u2019s hardest delivery-engineering problems',
-        weight:{technical:3,client:2,innovation:3,leadership:2,value:3},
         technical:['Solves the hardest engineering problems across the firm\u2019s most complex delivery engagements','Sets technical direction for the engineering IC bench, in partnership with Architecture','Recognized as the top technical authority for delivery-grade engineering'],
         client:['Executive-level technical credibility on delivery execution','Requested by name to rescue or de-risk the highest-stakes delivery engagements'],
         innovation:['Sets AI-assisted delivery standards adopted firm-wide','Evaluates and pilots new AI-native engineering approaches before they\u2019re broadly adopted'],
@@ -489,7 +451,6 @@ let VERTICALS=[
       L4:{name:'Data Architect',
         tagline:'The architecture fork off Lead Data Engineer — sets reference-architecture and governance standards across engagements.',
         scope:'Reference architecture across several engagements', direction:'Ambiguous cross-account architecture problems; they scope what to solve',
-        weight:{technical:3,client:2,innovation:3,leadership:2,value:3},
         technical:['Defines reference-architecture patterns adopted across multiple engagements','Establishes governance, security and data-contract standards within the practice','The go-to for the hardest architectural decisions across accounts','Evaluates and selects platform-level tooling with cost and risk tradeoffs across clients'],
         client:['Trusted architecture advisor across several client relationships at once','Called in to de-risk a platform or architecture decision on another engagement','Represents Astrodata\u2019s architectural credibility in pre-sales conversations'],
         innovation:['Designs platform patterns that serve AI and agent consumers as first-class across engagements','Sets AI-assisted architecture-review patterns adopted practice-wide','Publishes or presents architectural points of view that shape how the firm thinks about a problem space'],
@@ -499,7 +460,6 @@ let VERTICALS=[
       L5:{name:'Principal Data Architect',
         tagline:'The firm\u2019s technical apex for architecture — sets how Astrodata builds across every client.',
         scope:'Firm-wide reference architecture & platform strategy', direction:'Identifies the right architecture across the entire practice',
-        weight:{technical:3,client:2,innovation:3,leadership:2,value:3},
         technical:['Defines reference architectures that get reused across all clients','Sets the firm\u2019s technical POV and informs partnership decisions','Handles genuinely novel problems where no established pattern exists','Establishes governance, security and data-contract standards across the whole practice'],
         client:['Executive-level technical credibility; advises on operating model and platform strategy','Requested by name to de-risk the hardest architectural decisions'],
         innovation:['Sets the firm-wide standard for AI in delivery and the commercial story around it','Advises client executives on the AI-readiness of their data estate','Designs platform patterns that serve AI and agent consumers as first-class, firm-wide'],
@@ -515,7 +475,6 @@ let VERTICALS=[
       L4:{name:'Engineering Manager',
         tagline:'The people-leadership entry point on the engineering side — owns a team, not an individual deliverable.',
         scope:'People, delivery & team health', direction:'Owns team outcomes, growth and staffing',
-        weight:{technical:1,client:3,innovation:2,leadership:3,value:2},
         technical:['Stays technically credible enough to review approach and coach on it, though no longer the individual author'],
         client:['Accountable for delivery health across the team\u2019s engagements; the escalation point when delivery is at risk','Owns senior client relationships alongside engagement leads','Anticipates where accounts are heading and staffs ahead of the need'],
         innovation:['Champions AI enablement across the team; creates the space and incentives for people to build and share skills'],
@@ -525,7 +484,6 @@ let VERTICALS=[
       L6:{name:'Director of Engineering',
         tagline:'Owns the engineering practice — its direction, its health, and how it\u2019s represented to the business.',
         scope:'The engineering practice', direction:'Sets the practice\u2019s direction and owns its outcomes',
-        weight:{technical:1,client:3,innovation:3,leadership:3,value:3},
         technical:['Sets the technical bar for the practice by proxy — through the leaders and architects they hire, develop and hold accountable'],
         client:['Executive sponsor for the firm\u2019s largest or highest-risk engineering relationships','Accountable for the practice\u2019s overall delivery reputation with clients and internally'],
         innovation:['Sets the practice\u2019s AI strategy and decides where the firm invests'],
@@ -556,7 +514,6 @@ const ORIGINAL_JSON=JSON.stringify({SCALE,BUCKETS,BUCKET_DESC,VERTICALS,EDGES_FO
 const vIndex=id=>VERTICALS.findIndex(v=>v.id===id);
 const levelRow=i=>2+i*2;
 const connRow=i=>3+i*2;
-function bars(n){let h='<span class="bars">';for(let i=1;i<=3;i++)h+=`<i class="${i<=n?'on':''}"></i>`;return h+'</span>';}
 
 let selected={v:'de',level:'L1'};
 
@@ -633,12 +590,10 @@ function buildLattice(){
       if(role){
         const sh=v.shades[s.id];
         const pressed=(selected.v===v.id&&selected.level===s.id);
-        const spark=`<div class="spark">${BUCKETS.map(b=>`<div class="s">${bars(role.weight[b.id])}<span>${b.abbr}</span></div>`).join('')}</div>`;
         html+=`<div class="cell" style="grid-column:${col};grid-row:${levelRow(i)}">
           <button class="node" id="node-${v.id}-${s.id}" style="--nc:${sh}" aria-pressed="${pressed}" onclick="selectRole('${v.id}','${s.id}')">
             <div class="toprow"><span class="lchip">${s.id}</span><span class="nname">${role.name}</span></div>
             <div class="nscope"><b>Owns:</b> ${role.scope}</div>
-            ${spark}
           </button></div>`;
       }
       if(i<SCALE.length-1 && v.roles[s.id] && v.roles[SCALE[i+1].id]){
@@ -715,8 +670,7 @@ function renderDetail(){
   d.style.setProperty('--dc-tint',v.tint);
 
   const bucketsHtml=BUCKETS.map(b=>`
-    <div class="bucket"><div class="bucket-head"><span class="title">${b.label}</span>
-      <span class="weight-pill editable" data-act="wcycle" data-b="${b.id}" title="Click to change weight">${WLABEL[role.weight[b.id]]} ${bars(role.weight[b.id])}</span></div>
+    <div class="bucket"><div class="bucket-head"><span class="title">${b.label}</span></div>
       <ul class="elist">${role[b.id].map((x,i)=>bulletHtml(b.id,x,i)).join('')}</ul>
       <button class="addbul" data-act="addbul" data-b="${b.id}">+ add point</button></div>`).join('');
   const valuesHtml=Object.entries(role.values).map(([k,val])=>`
@@ -785,8 +739,7 @@ document.addEventListener('click',e=>{
   const role=curRole(); if(!role) return;
   const act=t.dataset.act, b=t.dataset.b, i=+t.dataset.i;
   markDirty();
-  if(act==='wcycle'){role.weight[b]=role.weight[b]%3+1;renderDetail();buildLattice();drawLinks();}
-  else if(act==='addbul'){role[b].push('New point');renderDetail();focusNewBullet(b,role[b].length-1);}
+  if(act==='addbul'){role[b].push('New point');renderDetail();focusNewBullet(b,role[b].length-1);}
   else if(act==='delbul'){role[b].splice(i,1);renderDetail();}
 });
 
