@@ -312,31 +312,31 @@ let VERTICALS=[
         value:['Assists with internal initiatives','Contributes to gaps in internal documentation'],
         values:{Curiosity:'Digs past the requested line item to what the client is actually trying to accomplish. Works with client to ensure success in their goals. ',Collaboration:'Pulls in the right people early rather than presenting a finished answer cold',Integrity:'Pushes back on a request for a number that would be technically true but misleading',Empathy:'Notices when a stakeholder is under pressure and adjusts how they deliver bad news'}},
       L3:{name:'Senior Analyst II',
-        tagline:'Owns the analytics function of an engagement and the trust that sits on top of it. A fork point.',
-        scope:'An analytics engagement', direction:'Outcome is defined; they shape what gets measured',
-        technical:['Sets the reporting / analysis standard for an engagement','Decides what should and shouldn\u2019t be measured, and why','Designs for the hard cases: conflicting metric definitions, legacy report sprawl'],
-        client:['Owns the relationship with client analytics leadership','Rebuilds trust when reporting has been wrong or inconsistent','Accountable for the analytics roadmap: plan, prioritization, what ships when'],
-        innovation:['Owns the AI-assisted analytics approach for the engagement','Brings solutions that raise how the whole team analyzes data'],
-        leadership:['Leads the analytics workstream team; formal mentorship of Analysts and Seniors','Carries the PM soft skills — sequencing, expectation-setting, stakeholder alignment'],
-        value:['Builds firm analytics capability: standards, training, hiring input','Owns an external-facing analytics accelerator or POV end to end','Contributes to pre-sales on the analytics side'],
-        values:{Curiosity:'Investigates why a metric keeps causing confusion instead of just re-explaining it again',Collaboration:'Builds alignment between client stakeholders who define success differently',Integrity:'Tells the client their dashboard has been wrong and owns the fix',Empathy:'Reads which stakeholder needs reassurance versus which needs the hard truth'}},
+        tagline:'Often runs lead for projects with multiple analysts. Provides reliable delivery on enterprise level engagements.',
+        scope:'An analytics engagement', direction:'They adjust deliverables and approach as engagement continues',
+        technical:['Aligns large client deliverables with Astrodata standards','Decides when a project should pivot deliverables or structure based on evolving needs','Designs with long term data governance in mind','Can act as team lead for larger engagements', 'Years of Data Experience: 7+'],
+        client:['Owns the relationship with client analytics leadership','Rebuilds trust when deliverables or deadlines have not been met','Accountable for the delivery roadmap: plan, prioritization, what ships when','When leading a project, is the point of contact keeping client expectations aligned across contributors'],
+        innovation:['Owns the AI-assisted analytics approach for the engagement','Brings solutions that raise how the whole team analyzes data','Coordinates AI-assisted workflows across teammates when leading a project'],
+        leadership:['Formal mentorship of Analysts and Seniors','Carries the PM soft skills — sequencing, expectation-setting, stakeholder alignment','Occasionally leads a project team of several analysts — assigning work, checking quality, and owning the delivery timeline'],
+        value:['Contributes to team standards, training, hiring input','Owns an external-facing analytics accelerator or POV end to end','Contributes to pre-sales on the analytics side','Takes on a growing share of internal initiatives, occasionally driving one end to end rather than just contributing'],
+        values:{Curiosity:'Investigates where a project went wrong and strategizes for how to prevent it in the future',Collaboration:'Builds alignment between client stakeholders who define success differently',Integrity:'Tells the client their approach needs to be adjusted or expectations need realignment',Empathy:'Works with multiple client stakeholders to find a balance between their goals and timelines'}},
       L4:{name:'Staff Analyst',
-        tagline:'Sets analytics direction across multiple engagements — the cross-account throughline for how Astrodata measures things.',
-        scope:'Analytics patterns across several engagements', direction:'Ambiguous cross-account measurement problems; they scope what to solve',
-        technical:['Sets analysis patterns and metric governance adopted across multiple engagements','The go-to for the hardest measurement problems across accounts'],
+        tagline:'Sets analytics direction across multiple engagements.',
+        scope:'Analytics patterns across several engagements', direction:'Fix and forecast for how to improve internal processes ',
+        technical:['Sets patterns across multiple engagements','The go-to for the hardest client problems', 'Years of Data Experience: 9+'],
         client:['Trusted advisor across several client relationships on analytics maturity','Called in to de-risk a reporting-trust problem on another engagement'],
-        innovation:['Sets AI-assisted analytics patterns adopted practice-wide','Publishes points of view that shape how the firm approaches measurement'],
+        innovation:['Sets AI-assisted analytics patterns adopted practice-wide','Publishes accelerators and blog posts regularly'],
         leadership:['Mentors multiple Leads and Seniors across engagements','Represents the analytics bar in leveling and hiring decisions'],
-        value:['Owns a cross-engagement analytics initiative — a shared metrics framework, a firm-wide standard','Represents Astrodata externally on analytics / measurement topics'],
-        values:{Curiosity:'Notices the same measurement problem recurring across accounts and solves it once, for everyone',Collaboration:'Coordinates analytics leads across engagements that don\u2019t otherwise talk to each other',Integrity:'Says no to a shortcut that would look fine on one engagement but undermine the firm\u2019s measurement standards',Empathy:'Reads what a struggling engagement actually needs and steps in without taking over'}},
+        value:['Owns a cross-engagement analytics initiative — a shared metrics framework, a firm-wide standard','Represents Astrodata externally at conferences and events'],
+        values:{Curiosity:'Notices the same  problem recurring across clients and solves it once, for everyone',Collaboration:'Coordinates analytics leads across engagements that don\u2019t otherwise talk to each other',Integrity:'Says no to a shortcut that would look fine on one engagement but undermines firms consistent delivery',Empathy:'Reads what a struggling engagement actually needs and steps in without taking over'}},
       L5:{name:'Principal Analyst',
-        tagline:'The technical apex of the analytics path — owns full-practice pattern management and enablement, defining how the firm measures and reports at scale.',
-        scope:'Full-practice pattern management and enablement', direction:'Identifies what\u2019s worth measuring across accounts',
-        technical:['Defines reference measurement frameworks reused across clients','Sets the firm\u2019s point of view on metrics governance and reporting architecture'],
+        tagline:'Owns full-practice pattern management and enablement, defining how the firm delivers and expands at scale.',
+        scope:'Full-practice pattern management and enablement', direction:'Identifies what patterns are worth repeating across accounts',
+        technical:['Defines frameworks reused across clients','Sets the firm\u2019s point of view on deliverable strategy', 'Years of Data Experience: 10+'],
         client:['Executive-level credibility on measurement and analytics strategy','Requested by name to de-risk the hardest analytics decisions'],
         innovation:['Sets the firm-wide standard for AI in analytics work'],
         leadership:['Technical mentor across the practice; grows the senior analyst bench'],
-        value:['Owns the firm\u2019s reference measurement framework and accelerator estate','Decides what Astrodata builds and publishes externally on analytics; represents the firm externally'],
+        value:['Owns the firm\u2019s reference frameworks and accelerator estate','Decides what Astrodata builds and publishes externally on analytics; represents the firm externally'],
         values:{Curiosity:'Sets the practice\u2019s measurement research agenda — what\u2019s worth figuring out next',Collaboration:'Builds bridges between analytics and engineering leadership so metrics and models stay consistent',Integrity:'Holds the firm to its own measurement standards even when a client wants a shortcut',Empathy:'Designs measurement frameworks around how clients actually make decisions, not just what\u2019s elegant'}}
     }
   },
@@ -596,8 +596,12 @@ function buildLattice(){
             <div class="nscope"><b>Owns:</b> ${role.scope}</div>
           </button></div>`;
       }
-      if(i<SCALE.length-1 && v.roles[s.id] && v.roles[SCALE[i+1].id]){
-        html+=`<div class="conn" style="grid-column:${col};grid-row:${connRow(i)};--cc:${v.shades[SCALE[i+1].id]}"></div>`;
+      if(v.roles[s.id]){
+        let j=i+1;
+        while(j<SCALE.length && !v.roles[SCALE[j].id]) j++;
+        if(j<SCALE.length){
+          html+=`<div class="conn" style="grid-column:${col};grid-row:${connRow(i)} / ${levelRow(j)};--cc:${v.shades[SCALE[j].id]}"></div>`;
+        }
       }
     });
   });
